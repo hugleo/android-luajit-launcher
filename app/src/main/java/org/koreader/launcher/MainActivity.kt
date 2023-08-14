@@ -26,6 +26,7 @@ import org.koreader.launcher.extensions.*
 import java.io.File
 import java.util.Locale
 import java.util.concurrent.CountDownLatch
+import android.content.res.Configuration
 
 class MainActivity : NativeActivity(), LuaInterface,
     ActivityCompat.OnRequestPermissionsResultCallback {
@@ -165,8 +166,15 @@ class MainActivity : NativeActivity(), LuaInterface,
             "surface changed {\n  width:  %d\n  height: %d\n format: %s\n}",
             width, height, pixelFormatName(format))
         )
-        surfaceWidth = width
-        surfaceHeight = height
+
+        if (getWidth() != width || getHeight() != height) {
+            Log.v(TAG_SURFACE, "Device with cutout")
+            surfaceWidth = width
+            surfaceHeight = height
+            // We need to trigger a new configuration event for KoReader to fix rotation as Surface might be invoked later
+            onConfigurationChanged(Configuration(resources.configuration))
+        }
+
         super.surfaceChanged(holder, format, width, height)
         drawSplashScreen(holder)
     }
