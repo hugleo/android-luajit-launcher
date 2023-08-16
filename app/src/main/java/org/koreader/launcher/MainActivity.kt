@@ -167,12 +167,14 @@ class MainActivity : NativeActivity(), LuaInterface,
             width, height, pixelFormatName(format))
         )
 
-        if (getWidth() != width || getHeight() != height) {
-            Log.v(TAG_SURFACE, "Device with cutout")
-            surfaceWidth = width
-            surfaceHeight = height
-            // We need to trigger a new configuration event for KoReader to fix rotation as Surface might be invoked later
-            onConfigurationChanged(Configuration(resources.configuration))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            if (windowManager.defaultDisplay.cutout != null) {
+                Log.v(TAG_SURFACE, "Device with cutout")
+                surfaceWidth = width
+                surfaceHeight = height
+                // We need to trigger a new configuration event for KoReader to fix rotation as Surface might be invoked later
+                onConfigurationChanged(Configuration(resources.configuration))
+            }
         }
 
         super.surfaceChanged(holder, format, width, height)
