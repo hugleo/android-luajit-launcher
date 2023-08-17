@@ -168,7 +168,8 @@ class MainActivity : NativeActivity(), LuaInterface,
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            if (windowManager.defaultDisplay.cutout != null) {
+            val cut = windowManager.defaultDisplay.cutout
+            if (cut != null && cut.boundingRects.isNotEmpty()) {
                 Log.v(TAG_SURFACE, "Device with cutout")
                 surfaceWidth = width
                 surfaceHeight = height
