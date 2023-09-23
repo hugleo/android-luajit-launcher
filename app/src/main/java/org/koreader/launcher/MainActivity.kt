@@ -173,8 +173,6 @@ class MainActivity : NativeActivity(), LuaInterface,
                 Log.v(TAG_SURFACE, "Device with cutout")
                 surfaceWidth = width
                 surfaceHeight = height
-                // We need to trigger a new configuration event for KoReader to fix rotation as Surface might be invoked later
-                onConfigurationChanged(Configuration(resources.configuration))
             }
         }
 
