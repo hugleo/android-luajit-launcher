@@ -9,6 +9,7 @@ import org.koreader.launcher.device.epd.TolinoEPDController
 import org.koreader.launcher.device.epd.RK3026EPDController
 import org.koreader.launcher.device.epd.RK3368EPDController
 import org.koreader.launcher.device.epd.OnyxEPDController
+import org.koreader.launcher.device.epd.OnyxUltraCEPDController
 import org.koreader.launcher.device.epd.OldTolinoEPDController
 
 import java.util.*
@@ -104,6 +105,11 @@ object EPDFactory {
                     OldTolinoEPDController()
                 }
 
+                DeviceInfo.EinkDevice.ONYX_TAB_ULTRA_C -> {
+                    logController("Onyx/Qualcomm")
+                    OnyxUltraCEPDController()
+                }
+
                 else -> {
                     FakeEPDController()
                 }
@@ -164,6 +170,7 @@ object EPDFactory {
             return
         }
 
+        override fun create() {}
         override fun resume() {}
         override fun pause() {}
     }

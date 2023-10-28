@@ -38,6 +38,10 @@ object LightsFactory {
                     logController("Onyx/Qualcomm")
                     OnyxWarmthController()
                 }
+                DeviceInfo.LightsDevice.ONYX_TAB_ULTRA_C -> {
+                    logController("Onyx/Qualcomm")
+                    OnyxSdkUltraCLightsController()
+                }
                 DeviceInfo.LightsDevice.ONYX_LEAF2,
                 DeviceInfo.LightsDevice.ONYX_DARWIN9,
                 DeviceInfo.LightsDevice.ONYX_NOTE_AIR2,
