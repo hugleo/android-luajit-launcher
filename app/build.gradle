@@ -131,4 +131,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_plugin_version"
     implementation "org.apache.commons:commons-compress:$commons_compress_version"
 
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
 }
