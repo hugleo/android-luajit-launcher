@@ -59,6 +59,7 @@ class RK3368EPDController : RK33xxEPDController(), EPDInterface {
         requestEpdMode(epdMode!!)
     }
 
+    override fun create() {}
     override fun resume() {}
     override fun pause() {}
 }

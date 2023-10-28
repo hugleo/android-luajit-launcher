@@ -3,9 +3,10 @@
 package org.koreader.launcher.device.epd
 
 import org.koreader.launcher.device.EPDInterface
-import org.koreader.launcher.device.epd.qualcomm.QualcommEPDController
+import org.koreader.launcher.device.epd.qualcomm.QualcommUltraCEPDController
+import org.lsposed.hiddenapibypass.HiddenApiBypass
 
-class OnyxEPDController : QualcommEPDController(), EPDInterface {
+class OnyxUltraCEPDController : QualcommUltraCEPDController(), EPDInterface {
 
     override fun getPlatform(): String {
         return "qualcomm"
@@ -58,7 +59,11 @@ class OnyxEPDController : QualcommEPDController(), EPDInterface {
         requestEpdMode(targetView, mode, delay, x, y, width, height)
     }
 
-    override fun create() {}
+    override fun create() {
+        HiddenApiBypass.addHiddenApiExemptions("");
+    }
+
     override fun resume() {}
     override fun pause() {}
 }
+

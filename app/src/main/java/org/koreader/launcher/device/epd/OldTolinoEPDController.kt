@@ -58,6 +58,7 @@ class OldTolinoEPDController : NTXEPDController(), EPDInterface {
         requestEpdMode(targetView, mode, delay, x, y, width, height)
     }
 
+    override fun create() {}
     override fun resume() {}
     override fun pause() {}
 }

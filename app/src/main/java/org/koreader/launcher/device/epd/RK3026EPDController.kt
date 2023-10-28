@@ -59,6 +59,7 @@ class RK3026EPDController : RK30xxEPDController(), EPDInterface {
         requestEpdMode(targetView, epdMode!!, true)
     }
 
+    override fun create() {}
     override fun resume() {}
     override fun pause() {}
 }
