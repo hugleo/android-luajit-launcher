@@ -49,7 +49,7 @@ class OnyxUltraCEPDController : QualcommUltraCEPDController(), EPDInterface {
     }
 
     override fun needsView(): Boolean {
-        return true
+        return false
     }
 
     override fun setEpdMode(targetView: android.view.View,
