@@ -71,6 +71,7 @@ object DeviceInfo {
         ONYX_NOTE_AIR2,
         ONYX_NOTE_PRO,
         ONYX_NOTE_X2,
+        ONYX_NOVA,
         ONYX_NOVA2,
         ONYX_NOVA3,
         ONYX_NOVA3_COLOR,
@@ -115,6 +116,7 @@ object DeviceInfo {
         ONYX_NOTE_AIR2,
         ONYX_NOTE_PRO,
         ONYX_NOTE_X2,
+        ONYX_NOVA,
         ONYX_NOVA2,
         ONYX_NOVA3,
         ONYX_NOVA3_COLOR,
@@ -135,6 +137,7 @@ object DeviceInfo {
         TAGUS_GEA,
         TOLINO_EPOS,
         TOLINO_SHINE3,
+        TOLINO_VISION4,
         TOLINO_VISION5
     }
 
@@ -201,6 +204,7 @@ object DeviceInfo {
     private val ONYX_NOTE_AIR2: Boolean
     private val ONYX_NOTE_PRO: Boolean
     private val ONYX_NOTE_X2: Boolean
+    private val ONYX_NOVA: Boolean
     private val ONYX_NOVA2: Boolean
     private val ONYX_NOVA3: Boolean
     private val ONYX_NOVA3_COLOR: Boolean
@@ -224,6 +228,7 @@ object DeviceInfo {
     private val TAGUS_GEA: Boolean
     private val TOLINO_EPOS: Boolean
     private val TOLINO_SHINE3: Boolean
+    private val TOLINO_VISION4: Boolean
     private val TOLINO_VISION5: Boolean
 
     init {
@@ -424,6 +429,11 @@ object DeviceInfo {
         ONYX_NOTE_X2 = MANUFACTURER.contentEquals("onyx")
             && MODEL.contentEquals("notex2")
 
+        // Onyx Nova
+        ONYX_NOVA = MANUFACTURER.contentEquals("onyx")
+            && PRODUCT.contentEquals("nova")
+            && DEVICE.contentEquals("nova")
+
         // Onyx Nova 2
         ONYX_NOVA2 = MANUFACTURER.contentEquals("onyx")
             && PRODUCT.contentEquals("nova2")
@@ -517,11 +527,12 @@ object DeviceInfo {
             || MODEL.contentEquals("tolino") && (DEVICE.contentEquals("tolino_vision2")
             || DEVICE.contentEquals("ntx_6sl"))
 
-        // Tolino Epos 2 and Tolino Vision 4 also have warmth lights
+        // Tolino Epos 2 also have warmth lights
         TOLINO_EPOS = BRAND.contentEquals("rakutenkobo")
             && MODEL.contentEquals("tolino")
             && DEVICE.contentEquals("ntx_6sl")
             && !HARDWARE.contentEquals("e60k00")
+            && !HARDWARE.contentEquals("e60q50")
             && !HARDWARE.contentEquals("e70k00")
 
         // Tolino Shine 3 also has warmth lights, but with ntx_io file
@@ -529,6 +540,12 @@ object DeviceInfo {
             && MODEL.contentEquals("tolino")
             && DEVICE.contentEquals("ntx_6sl")
             && HARDWARE.contentEquals("e60k00")
+
+        // Tolino Vision 4 also has warmth lights, but with ntx_io file
+        TOLINO_VISION4 = BRAND.contentEquals("rakutenkobo")
+            && MODEL.contentEquals("tolino")
+            && DEVICE.contentEquals("ntx_6sl")
+            && HARDWARE.contentEquals("e60q50")
 
         // Tolino Vision 5 also has warmth lights, but with ntx_io file
         TOLINO_VISION5 = BRAND.contentEquals("rakutenkobo")
@@ -599,6 +616,7 @@ object DeviceInfo {
         deviceMap[EinkDevice.ONYX_NOTE_AIR2] = ONYX_NOTE_AIR2
         deviceMap[EinkDevice.ONYX_NOTE_PRO] = ONYX_NOTE_PRO
         deviceMap[EinkDevice.ONYX_NOTE_X2] = ONYX_NOTE_X2
+        deviceMap[EinkDevice.ONYX_NOVA] = ONYX_NOVA
         deviceMap[EinkDevice.ONYX_NOVA2] = ONYX_NOVA2
         deviceMap[EinkDevice.ONYX_NOVA3] = ONYX_NOVA3
         deviceMap[EinkDevice.ONYX_NOVA3_COLOR] = ONYX_NOVA3_COLOR
@@ -651,6 +669,7 @@ object DeviceInfo {
         lightsMap[LightsDevice.ONYX_NOTE_AIR] = ONYX_NOTE_AIR
         lightsMap[LightsDevice.ONYX_NOTE_AIR2] = ONYX_NOTE_AIR2
         lightsMap[LightsDevice.ONYX_NOTE_X2] = ONYX_NOTE_X2
+        lightsMap[LightsDevice.ONYX_NOVA] = ONYX_NOVA
         lightsMap[LightsDevice.ONYX_NOVA2] = ONYX_NOVA2
         lightsMap[LightsDevice.ONYX_NOVA3] = ONYX_NOVA3
         lightsMap[LightsDevice.ONYX_NOVA3_COLOR] = ONYX_NOVA3_COLOR
@@ -671,6 +690,7 @@ object DeviceInfo {
         lightsMap[LightsDevice.TAGUS_GEA] = TAGUS_GEA
         lightsMap[LightsDevice.TOLINO_EPOS] = TOLINO_EPOS
         lightsMap[LightsDevice.TOLINO_SHINE3] = TOLINO_SHINE3
+        lightsMap[LightsDevice.TOLINO_VISION4] = TOLINO_VISION4
         lightsMap[LightsDevice.TOLINO_VISION5] = TOLINO_VISION5
 
         lightsMap.keys.iterator().run {
